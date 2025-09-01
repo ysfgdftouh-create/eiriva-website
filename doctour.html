@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Eiriva — Trusted Medical Tourism in Tunisia</title>
+  <meta name="description" content="Eiriva helps you plan a safe, comfortable, and fully organized medical trip to Tunisia — from clinic selection to hotel and airport transfers." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+  --bg: #f9fafc;           /* light background */
+  --bg-soft: #eef2f7;      /* soft section bg */
+  --card: #ffffff;          /* white cards */
+  --text: #0a1a2a;         /* primary text */
+  --muted: #6b7280;        /* secondary text */
+  --brand: #1ca7ec;        /* main blue */
+  --brand-2: #17c3b2;      /* mint teal */
+  --accent: #ff7f50;       /* coral for buttons/cta */
+  --danger: #e63946;       /* red for warnings */
+  --ring: rgba(28, 167, 236, .25);
+  --radius: 12px;
+  --shadow: 0 8px 20px rgba(0,0,0,.08);
+  --shadow-soft: 0 4px 12px rgba(0,0,0,.05);
+  --maxw: 1200px;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif; color: var(--text); background: var(--bg); line-height: 1.6; }
+a { color: var(--brand); text-decoration: none; }
+a:hover { opacity: 0.9; }
+.container { width: 100%; max-width: var(--maxw); margin-inline: auto; padding: 0 20px; }
+
+/* Header */
+header { position: sticky; top: 0; z-index: 50; background: var(--card); border-bottom: 1px solid #e5e7eb; }
+.nav { display: flex; align-items: center; justify-content: space-between; padding: 16px 0; }
+.logo { display: flex; gap: 10px; align-items: center; font-weight: 800; color: var(--text); }
+.logo .dot { width: 12px; height: 12px; border-radius: 50%; background: linear-gradient(135deg, var(--brand), var(--brand-2)); }
+.nav a { color: var(--text); font-weight: 600; margin: 0 10px; }
+.cta { display: inline-flex; align-items: center; gap: 10px; background: var(--brand); color: #fff; font-weight: 800; border: none; border-radius: 999px; padding: 10px 16px; box-shadow: var(--shadow-soft); cursor: pointer; }
+.cta:hover { opacity: 0.9; }
+
+/* Hero */
+.hero { position: relative; padding: 72px 0 40px; background: var(--bg-soft); }
+.hero-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 28px; align-items: center; }
+.badge { display: inline-flex; align-items: center; gap: 8px; border-radius: 999px; padding: 6px 10px; background: rgba(28, 167, 236, 0.1); color: var(--brand); font-weight: 700; }
+h1 { font-size: clamp(28px, 5vw, 52px); line-height: 1.05; margin: 16px 0 14px; }
+.lead { font-size: clamp(15px, 2.4vw, 19px); color: var(--muted); max-width: 60ch; }
+.hero-card { background: var(--card); border: 1px solid rgba(28, 167, 236, 0.15); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow); }
+.hero-card h3 { margin: 0 0 6px; }
+.row { display: flex; gap: 10px; flex-wrap: wrap; margin: 18px 0 8px; }
+.chip { background: rgba(23, 195, 178, 0.12); border: 1px solid rgba(23, 195, 178, 0.3); color: var(--brand-2); padding: 8px 12px; border-radius: 999px; font-weight: 700; }
+
+/* Sections */
+section { padding: 56px 0; }
+.section-title { display: flex; align-items: flex-end; justify-content: space-between; gap: 14px; margin-bottom: 22px; }
+.section-title h2 { margin: 0; font-size: clamp(22px, 4vw, 36px); }
+.sub { color: var(--muted); }
+
+/* Cards grid */
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.card { background: var(--card); border: 1px solid rgba(28, 167, 236, 0.15); border-radius: var(--radius); box-shadow: var(--shadow-soft); padding: 18px; color: var(--text); }
+.card h3 { margin: 6px 0 10px; }
+.card p { color: var(--muted); }
+.icon { width: 36px; height: 36px; border-radius: 10px; display: grid; place-items: center; font-weight: 900; background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: #fff; }
+
+/* Pricing table */
+.table { width: 100%; border-collapse: collapse; overflow: hidden; border-radius: 12px; border: 1px solid rgba(28, 167, 236, 0.15); }
+.table th, .table td { padding: 14px; border-bottom: 1px solid rgba(28, 167, 236, 0.1); }
+.table th { background: rgba(28, 167, 236, 0.1); text-align: left; }
+.table tr:hover { background: rgba(28, 167, 236, 0.05); }
+.tag { font-size: 12px; padding: 4px 8px; border-radius: 999px; background: rgba(28, 167, 236, 0.12); border: 1px solid rgba(28, 167, 236, 0.25); color: var(--brand-2); font-weight: 700; }
+
+/* Testimonials */
+.quote { font-style: italic; color: var(--muted); margin: 0; }
+
+/* Hotels / Partners */
+.media { display: flex; gap: 14px; align-items: center; }
+.media img { width: 64px; height: 64px; border-radius: 12px; object-fit: cover; border: 1px solid rgba(28, 167, 236, 0.15); }
+
+/* Form */
+form { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+form .full { grid-column: 1/-1; }
+input, select, textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: var(--radius);
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid rgba(28, 167, 236, 0.15);
+  outline: none;
+  box-shadow: none;
+}
+input:focus, select:focus, textarea:focus { border-color: var(--brand); box-shadow: 0 0 0 6px var(--ring); }
+textarea { min-height: 120px; }
+.btn { background: var(--brand); color: #fff; border: none; border-radius: var(--radius); padding: 12px 16px; font-weight: 800; cursor: pointer; }
+.btn:hover { opacity: 0.9; }
+
+/* Footer */
+footer { padding: 36px 0; border-top: 1px solid rgba(28, 167, 236, 0.1); background: #f9fafc; color: var(--text); }
+.foot a { color: var(--brand); }
+
+/* Responsive */
+@media (max-width: 960px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .grid { grid-template-columns: 1fr 1fr; }
+  .foot { grid-template-columns: 1fr 1fr; }
+  form { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .grid { grid-template-columns: 1fr; }
+}
+
+  </style>
+</head>
+<body>
+  <!-- Header / Navigation -->
+  <header>
+
+
+    <div class="container nav">
+      <div class="logo"><span class="dot"></span> Eiriva</div>
+      <nav aria-label="Primary">
+        <a href="#services">Services</a>
+        <a href="#procedures">Procedures</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#hotels">Hotels</a>
+        <a href="#clinics">Clinics</a>
+        <a href="#testimonials">Reviews</a>
+        <a href="#contact" class="cta">Get a Quote</a>
+      </nav>
+    </div>
+      <select id="languageSwitcher">
+    <option value="en">English</option>
+    <option value="fr">Français</option>
+    <option value="ar">العربية</option>
+  </select>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="badge">Tunisia • Medical Travel • End‑to‑End Care</span>
+        <h1>Relax. We organize your whole medical trip — safely, discreetly, and affordably.</h1>
+        <p class="lead">From clinic matchmaking and surgeon selection to hotel bookings and airport transfers, Eiriva coordinates everything so you can focus on recovery.</p>
+        <div class="row" style="margin:18px 0 8px">
+          <span class="chip">Board‑certified surgeons</span>
+          <span class="chip">Partner hotels</span>
+          <span class="chip">Private transfers</span>
+          <span class="chip">After‑care support</span>
+        </div>
+      </div>
+      <aside class="hero-card" aria-labelledby="quick-quote">
+        <h3 id="quick-quote">Quick Quote</h3>
+        <p class="mini">Tell us what you need — we’ll reply with an indicative plan and price breakdown.</p>
+        <form onsubmit="event.preventDefault(); alert('Thanks! We\'ll contact you shortly.'); this.reset();">
+          <input class="full" type="text" placeholder="Full name" required>
+          <input type="tel" placeholder="Phone / WhatsApp (+216 …)" required>
+          <input type="email" placeholder="Email" required>
+          <select class="full" required>
+  <option value="">Select a procedure</option>
+
+  <!-- General & Specialized Medicine -->
+  <option value="general_medicine">General Medicine</option>
+  <option value="cardiology">Cardiology</option>
+  <option value="gastroenterology">Gastroenterology</option>
+  <option value="gynecology_obstetrics">Gynecology & Obstetrics</option>
+  <option value="pediatrics">Pediatrics</option>
+  <option value="dermatology">Dermatology</option>
+
+  <!-- Surgery -->
+  <option value="general_surgery">General Surgery</option>
+  <option value="orthopedic_surgery">Orthopedic Surgery</option>
+  <option value="plastic_surgery">Plastic / Cosmetic Surgery</option>
+  <option value="ent_surgery">ENT (Ear, Nose & Throat)</option>
+  <option value="ophthalmology">Ophthalmology</option>
+
+  <!-- Specialized Procedures -->
+  <option value="digestive_endoscopy">Digestive Endoscopy</option>
+  <option value="visceral_surgery">Visceral Surgery</option>
+  <option value="bariatric_surgery">Bariatric Surgery (Sleeve, Bypass, Gastric Balloon)</option>
+  <option value="gynecologic_surgery">Gynecologic Surgery (Hysterectomy, Myomectomy, Prolapse Repair)</option>
+  <option value="pediatric_surgery">Pediatric Surgery</option>
+  <option value="urologic_surgery">Urologic Surgery</option>
+  <option value="intimate_cosmetic_surgery">Intimate Cosmetic Surgery</option>
+  <option value="dental_surgery">Dental Surgery (Implants, Veneers, Whitening)</option>
+  <option value="hair_transplant">Hair Transplant (FUE, PRP, Regenera Activa)</option>
+  <option value="aesthetic_medicine">Aesthetic Medicine (Botox, Lifting, Chemical Peels)</option>
+  <option value="ivf">Assisted Reproductive Technology (IVF)</option>
+  <option value="pulmonology">Pulmonology (Sleep Apnea, Pulmonary Rehabilitation)</option>
+  <option value="neurosurgery">Neurosurgery (Brain Tumors, Herniated Discs)</option>
+
+  <!-- Emergency & ICU -->
+  <option value="emergency">24/7 Emergency Services</option>
+  <option value="icu">Intensive Care & ICU</option>
+  <option value="medical_ambulance">Medical Ambulance</option>
+
+  <!-- Technical Facilities -->
+  <option value="medical_imaging">Medical Imaging (CT, X-ray, Ultrasound)</option>
+  <option value="laboratory">Integrated Medical Laboratory</option>
+  <option value="operating_room">Modern Sterile Operating Room</option>
+  <option value="maternity">Maternity Services with Prenatal Care</option>
+</select>
+
+          <textarea class="full" placeholder="Tell us your goals, dates, and any medical notes"></textarea>
+          <button class="btn full" type="submit">Request My Plan</button>
+        </form>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Services (Organisation) -->
+<section id="services">
+  <div class="container">
+    <div class="section-title">
+      <h2>Our Services</h2>
+      <p class="sub">Transparent coordination before, during, and after your medical journey.</p>
+    </div>
+    <div class="grid">
+      <!-- Médecine générale et spécialisée -->
+      <article class="card">
+        <div class="icon">1</div>
+        <h3>Médecine générale et spécialisée</h3>
+        <p>Cardiologie, Gastro-entérologie, Gynécologie & obstétrique, Pédiatrie, Dermatologie</p>
+      </article>
+
+      <!-- Chirurgie -->
+      <article class="card">
+        <div class="icon">2</div>
+        <h3>Chirurgie</h3>
+        <p>Chirurgie générale, orthopédique, esthétique, ORL, Ophtalmologie</p>
+      </article>
+
+      <!-- Services spécialisés -->
+      <article class="card">
+        <div class="icon">3</div>
+        <h3>Services spécialisés</h3>
+        <p>Endoscopie digestive, Chirurgie viscérale, Chirurgie bariatrique, Chirurgie gynécologique, Chirurgie pédiatrique, Chirurgie urologique, Chirurgie esthétique intime, Chirurgie dentaire, Greffe de cheveux, Médecine esthétique, PMI, Pneumologie, Neurochirurgie</p>
+      </article>
+
+      <!-- Services d'urgence et soins intensifs -->
+      <article class="card">
+        <div class="icon">4</div>
+        <h3>Services d'urgence et soins intensifs</h3>
+        <p>Urgences 24h/24, Soins intensifs & réanimation, Ambulance médicalisée</p>
+      </article>
+
+      <!-- Plateaux techniques -->
+      <article class="card">
+        <div class="icon">5</div>
+        <h3>Plateaux techniques</h3>
+        <p>Imagerie médicale, Laboratoire d’analyses médicales intégré, Bloc opératoire stérilisé et moderne, Service maternité avec suivi prénatal</p>
+      </article>
+    </div>
+  </div>
+</section>
+  
+
+  <!-- Procedures (like operations pages) -->
+  <section id="procedures">
+    <div class="container">
+      <div class="section-title">
+        <h2>Featured Procedures</h2>
+        <p class="sub">Popular choices our partner surgeons perform with excellence.</p>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <h3>Rhinoplasty</h3>
+          <p>Functional & aesthetic nose surgery to refine profile and improve breathing. <span class="tag">From €1,900</span></p>
+        </article>
+        <article class="card">
+          <h3>Liposuction (multi‑zone)</h3>
+          <p>High‑definition body contouring with safe recovery planning. <span class="tag">From €1,950</span></p>
+        </article>
+        <article class="card">
+          <h3>Abdominoplasty</h3>
+          <p>Tummy tuck with or without 360° lipo depending on your case. <span class="tag">From €2,800</span></p>
+        </article>
+        <article class="card">
+          <h3>Breast augmentation</h3>
+          <p>Implants or fat transfer with natural‑looking proportions. <span class="tag">From €2,950</span></p>
+        </article>
+        <article class="card">
+          <h3>Facelift</h3>
+          <p>Deep‑plane techniques for durable, elegant rejuvenation. <span class="tag">From €3,700</span></p>
+        </article>
+        <article class="card">
+          <h3>Intimate surgery</h3>
+          <p>Confidential, specialist‑led procedures for comfort & confidence. <span class="tag">From €1,100</span></p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing snapshot (tarifs) -->
+<section id="pricing">
+  <div class="container">
+    <div class="section-title">
+      <h2>Tarifs transparents</h2>
+      <p class="sub">Les prix des forfaits incluent généralement les frais de clinique, l'anesthésie, le chirurgien, les nuits d'hôtel et les transferts.</p>
+    </div>
+    <div class="card">
+      <div class="mini">*Le prix réel dépend de l'évaluation médicale. Demandez un plan personnalisé.</div>
+      <table class="table" aria-label="Tableau des prix">
+        <thead>
+          <tr><th>Intervention</th><th>À partir de</th><th>Séjour</th><th>Notes</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Liposuccion (1–2 zones)</td><td>1 600 €</td><td>4 nuits / 5 jours</td><td>Vêtement de compression inclus</td></tr>
+          <tr><td>Abdominoplastie + liposuccion complète</td><td>2 950 €</td><td>4 nuits / 5 jours</td><td>Retrait des drains avant le vol</td></tr>
+          <tr><td>Augmentation mammaire</td><td>2 950 €</td><td>4 nuits / 5 jours</td><td>Implants (marqués CE)</td></tr>
+          <tr><td>Rhinoplastie</td><td>2 500 €</td><td>4 nuits / 5 jours</td><td>Correction esthétique du nez</td></tr>
+          <tr><td>Chirurgie intime (plage de prix)</td><td>1 100 €</td><td>2–4 nuits</td><td>Prise en charge confidentielle</td></tr>
+          <tr><td>Greffe de cheveux (FUE)</td><td>2 500 €</td><td>3 nuits / 4 jours</td><td>Traitement PRP inclus</td></tr>
+          <tr><td>Chirurgie réparatrice (cicatrices, brûlures)</td><td>Sur devis</td><td>Variable</td><td>Suivi post-opératoire personnalisé</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Hotels partners -->
+  <section id="hotels">
+    <div class="container">
+      <div class="section-title">
+        <h2>Partner Hotels</h2>
+        <p class="sub">Comfortable, recovery‑friendly stays near our clinics.</p>
+      </div>
+      <div class="grid">
+        <article class="card media">
+          <img src="https://images.unsplash.com/photo-1551776235-dde6d4829808?q=80&w=400&auto=format&fit=crop" alt="Hotel lobby with modern sofas">
+          <div>
+            <h3>Hotel Azur • La Marsa</h3>
+            <p>Coastal views, quiet floors, breakfast in room on request.</p>
+          </div>
+        </article>
+        <article class="card media">
+          <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=400&auto=format&fit=crop" alt="Hotel room with large bed">
+          <div>
+            <h3>Clinique Suites • Tunis Centre</h3>
+            <p>Step‑free access, nurse call options, late checkout support.</p>
+          </div>
+        </article>
+        <article class="card media">
+          <img src="https://images.unsplash.com/photo-1541976076758-347942db1970?q=80&w=400&auto=format&fit=crop" alt="Hotel exterior at sunset">
+          <div>
+            <h3>Garden & Spa • Lac 2</h3>
+            <p>Calming spa, airport shuttle, recovery‑friendly menus.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+<!-- Clinics (cliniques) -->
+<section id="clinics">
+  <div class="container">
+    <div class="section-title">
+      <h2>Clinics We Trust</h2>
+      <p class="sub">Accredited facility with modern ORs and ICU backup.</p>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <h3>Clinique Le Bardo</h3>
+        <p>ISO‑accredited private hospital. ENT, plastics, and general surgery departments with experienced staff.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Testimonials (temoignages) -->
+  <section id="testimonials">
+    <div class="container">
+      <div class="section-title">
+        <h2>Patient Reviews</h2>
+        <p class="sub">Real experiences from travelers we’ve supported.</p>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <p class="quote">“Everything from the airport pickup to the post‑op check felt seamless. Clear prices and kind staff.”</p>
+          <p>— Lina, France</p>
+        </article>
+        <article class="card">
+          <p class="quote">“My coordinator stayed with me at the clinic and translated. I felt safe the whole time.”</p>
+          <p>— Mariam, UAE</p>
+        </article>
+        <article class="card">
+          <p class="quote">“Hotel was perfect for recovery and the surgeon’s results are amazing. Highly recommend.”</p>
+          <p>— Sofia, Italy</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="container">
+      <div class="section-title">
+        <h2>FAQ</h2>
+        <p class="sub">What most travelers ask before booking.</p>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <h3>Who performs the surgeries?</h3>
+          <p>Only board‑certified surgeons at accredited facilities. We are a coordination platform — we don’t perform medical acts.</p>
+        </article>
+        <article class="card">
+          <h3>What’s included in a package?</h3>
+          <p>Pre‑op assessment, surgery fees, anesthesia, hospital stay (if needed), hotel nights, private transfers, and on‑site assistance.</p>
+        </article>
+        <article class="card">
+          <h3>Can I bring a companion?</h3>
+          <p>Yes. We can arrange twin rooms and add companion transfers and meals to your plan.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact / Legal (contacts & mentions légales) -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-title">
+        <h2>Contact & Legal</h2>
+        <p class="sub">We’re a medical‑tourism coordination agency. For questions or complaints, contact us below.</p>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <h3>Write to us</h3>
+          <p class="mini">Email: hello@Eiriva.example • Phone: +216 98 333 040</p>
+          <p class="mini">Address: Avenue de la Santé, Tunis, Tunisia</p>
+        </div>
+        <div class="card">
+          <h3>Legal notice</h3>
+          <p class="mini">Eiriva is a support platform for medical tourism and does not perform any medical procedures. Please consult our Terms & Privacy before booking.</p>
+          <div class="row" style="margin-top:8px">
+            <a class="tag" href="#">Terms</a>
+            <a class="tag" href="#">Privacy</a>
+            <a class="tag" href="#">Cookies</a>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Message us</h3>
+          <form onsubmit="event.preventDefault(); alert('Thanks for your message!'); this.reset();">
+            <input type="text" placeholder="Your name" required>
+            <input type="email" placeholder="Your email" required>
+            <textarea class="full" placeholder="How can we help?" required></textarea>
+            <button class="btn" type="submit">Send</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container foot">
+      <div>
+        <div class="logo" style="margin-bottom:8px"><span class="dot"></span> Eiriva</div>
+        <p class="mini">© 2013–2025 Eiriva. All rights reserved.</p>
+      </div>
+      <div>
+        <h4 style="margin:0 0 8px">Explore</h4>
+        <p class="mini"><a href="#services">Services</a> · <a href="#procedures">Procedures</a> · <a href="#pricing">Pricing</a></p>
+      </div>
+      <div>
+        <h4 style="margin:0 0 8px">Company</h4>
+        <p class="mini"><a href="#clinics">Clinics</a> · <a href="#hotels">Hotels</a> · <a href="#testimonials">Reviews</a></p>
+      </div>
+      <div>
+        <h4 style="margin:0 0 8px">Contact</h4>
+        <p class="mini">hello@Eiriva.example<br>+216 98 333 040</p>
+      </div>
+    </div>
+  </footer>
+ <script src="lang.js"></script>
+
+</body>
+</html>
+</body>
+</html>
